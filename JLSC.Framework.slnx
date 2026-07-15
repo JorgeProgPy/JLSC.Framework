@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/Build/" />
+  <Folder Name="/Core/">
+    <Project Path="src/JLSC.Framework.Application/JLSC.Framework.Application.csproj" />
+    <Project Path="src/JLSC.Framework.Contracts/JLSC.Framework.Contracts.csproj" />
+    <Project Path="src/JLSC.Framework.Domain/JLSC.Framework.Domain.csproj" />
+    <Project Path="src/JLSC.Framework.Persistence/JLSC.Framework.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Documentation/" />
+  <Folder Name="/Infrastructure/">
+    <Project Path="src/JLSC.Framework.Infrastructure/JLSC.Framework.Infrastructure.csproj" />
+    <Project Path="src/JLSC.Framework.Shared/JLSC.Framework.Shared.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="src/JLSC.Framework.Web/JLSC.Framework.Web.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/JLSC.Framework.Infrastructure.Tests/JLSC.Framework.Infrastructure.Tests.csproj" />
+  </Folder>
+</Solution>

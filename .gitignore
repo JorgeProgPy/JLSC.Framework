@@ -1,0 +1,30 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build
+bin/
+obj/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Test Results
+TestResults/
+
+# Logs
+*.log
+
+# NuGet
+packages/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# OS
+.DS_Store

@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\JLSC.Framework.Application\JLSC.Framework.Application.csproj" />
+    <ProjectReference Include="..\JLSC.Framework.Contracts\JLSC.Framework.Contracts.csproj" />
+    <ProjectReference Include="..\JLSC.Framework.Persistence\JLSC.Framework.Persistence.csproj" />
+    <ProjectReference Include="..\JLSC.Framework.Infrastructure\JLSC.Framework.Infrastructure.csproj" />
+    <ProjectReference Include="..\JLSC.Framework.Shared\JLSC.Framework.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Middlewares\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Areas\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>

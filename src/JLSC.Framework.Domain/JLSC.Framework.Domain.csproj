@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Intefaces\" />
+    <Folder Include="Common\Enums\" />
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Specification\" />
+    <Folder Include="Common\ValueObjects\" />
+    <Folder Include="Core\Catalogos\Enums\" />
+    <Folder Include="Core\Catalogos\Interfaces\" />
+    <Folder Include="Core\Contactos\Enums\" />
+    <Folder Include="Core\Contactos\Interfaces\" />
+    <Folder Include="Core\Archivos\Enums\" />
+    <Folder Include="Core\Archivos\Interfaces\" />
+    <Folder Include="Core\Configuracion\Entities\" />
+    <Folder Include="Core\Configuracion\Enums\" />
+    <Folder Include="Core\Configuracion\Interfaces\" />
+    <Folder Include="Core\Organizaciones\Entities\" />
+    <Folder Include="Core\Organizaciones\Enums\" />
+    <Folder Include="Core\Organizaciones\Interfaces\" />
+    <Folder Include="Core\Geografia\Enums\" />
+    <Folder Include="Core\Geografia\Interfaces\" />
+    <Folder Include="CMS\" />
+    <Folder Include="Seguridad\" />
+  </ItemGroup>
+
+</Project>

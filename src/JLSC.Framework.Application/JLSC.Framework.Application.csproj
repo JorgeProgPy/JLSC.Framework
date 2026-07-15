@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\JLSC.Framework.Domain\JLSC.Framework.Domain.csproj" />
+    <ProjectReference Include="..\JLSC.Framework.Contracts\JLSC.Framework.Contracts.csproj" />
+    <ProjectReference Include="..\JLSC.Framework.Shared\JLSC.Framework.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\Interfaces\" />
+    <Folder Include="Common\NewFolder\" />
+    <Folder Include="Common\Validation\" />
+    <Folder Include="Common\Request\" />
+    <Folder Include="Common\Responses\" />
+    <Folder Include="Common\Exceptios\" />
+    <Folder Include="Common\Behaviors\" />
+    <Folder Include="Core\Archivos\Events\" />
+    <Folder Include="Core\Archivos\Responses\" />
+    <Folder Include="Core\Archivos\Services\" />
+    <Folder Include="Core\Contactos\Commands\" />
+    <Folder Include="Core\Contactos\DTOs\" />
+    <Folder Include="Core\Contactos\Mappings\" />
+    <Folder Include="Core\Contactos\Queries\" />
+    <Folder Include="Core\Contactos\Validators\" />
+    <Folder Include="Core\Archivos\DTOs\" />
+    <Folder Include="Core\Archivos\Mappings\" />
+    <Folder Include="Core\Archivos\Queries\" />
+    <Folder Include="Core\Archivos\Validators\" />
+    <Folder Include="Core\Organizaciones\Commands\" />
+    <Folder Include="Core\Organizaciones\DTOs\" />
+    <Folder Include="Core\Organizaciones\Mappings\" />
+    <Folder Include="Core\Organizaciones\Queries\" />
+    <Folder Include="Core\Organizaciones\Validators\" />
+    <Folder Include="Core\Configuracion\Commands\" />
+    <Folder Include="Core\Configuracion\DTOs\" />
+    <Folder Include="Core\Configuracion\Mappings\" />
+    <Folder Include="Core\Configuracion\Queries\" />
+    <Folder Include="Core\Configuracion\Validators\" />
+    <Folder Include="Core\Geografia\Commands\" />
+    <Folder Include="Core\Geografia\DTOs\" />
+    <Folder Include="Core\Geografia\Mappings\" />
+    <Folder Include="Core\Geografia\Queries\" />
+    <Folder Include="Core\Geografia\Validators\" />
+    <Folder Include="Core\Catalogos\DTOs\" />
+    <Folder Include="Core\Catalogos\Validators\" />
+    <Folder Include="Core\Catalogos\Mappings\" />
+    <Folder Include="Core\Catalogos\Queries\" />
+    <Folder Include="Core\Catalogos\Commands\" />
+    <Folder Include="CMS\" />
+    <Folder Include="Seguridad\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

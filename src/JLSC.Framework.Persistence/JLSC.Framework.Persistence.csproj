@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<ProjectReference Include="..\JLSC.Framework.Domain\JLSC.Framework.Domain.csproj" />
+		<ProjectReference Include="..\JLSC.Framework.Application\JLSC.Framework.Application.csproj" />
+		<ProjectReference Include="..\JLSC.Framework.Shared\JLSC.Framework.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Configurations\" />
+		<Folder Include="Core\Configurations\Organizaciones\" />
+		<Folder Include="Core\Configurations\Configuracion\" />
+		<Folder Include="Core\Database\Factories\" />
+		<Folder Include="Core\Database\Interceptors\" />
+		<Folder Include="Core\Extensions\" />
+		<Folder Include="Core\Converters\" />
+		<Folder Include="CMS\" />
+		<Folder Include="Seguridad\" />
+		<Folder Include="UnitOfWork\" />
+		<Folder Include="Repositories\Archivos\" />
+		<Folder Include="Repositories\Catalogos\" />
+		<Folder Include="Repositories\Configuracion\" />
+		<Folder Include="Repositories\Contactos\" />
+		<Folder Include="Repositories\Geografia\" />
+		<Folder Include="Repositories\Common\" />
+		<Folder Include="Repositories\Organizaciones\" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+</Project>

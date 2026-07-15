@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\JLSC.Framework.Shared\JLSC.Framework.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="CMS\" />
+    <Folder Include="Seguridad\" />
+    <Folder Include="Core\Contactos\" />
+    <Folder Include="Core\Organizaciones\" />
+    <Folder Include="Core\Configuracion\" />
+    <Folder Include="Core\Gografi\" />
+    <Folder Include="Core\Catalogos\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
