@@ -11,4 +11,6 @@ public sealed class GuardarArchivoRequest
     public string? Descripcion { get; init; }
 
     public bool EsPublico { get; init; }
+
+       public long? PropietarioPersonaId { get; init; }
 }

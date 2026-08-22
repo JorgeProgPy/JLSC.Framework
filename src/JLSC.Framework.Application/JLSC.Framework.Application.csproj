@@ -7,6 +7,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common\Helpers\" />
     <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\NewFolder\" />
     <Folder Include="Common\Validation\" />
@@ -14,6 +15,7 @@
     <Folder Include="Common\Responses\" />
     <Folder Include="Common\Exceptios\" />
     <Folder Include="Common\Behaviors\" />
+    <Folder Include="Core\Archivos\Constants\" />
     <Folder Include="Core\Archivos\Events\" />
     <Folder Include="Core\Archivos\Responses\" />
     <Folder Include="Core\Archivos\Services\" />
@@ -23,8 +25,6 @@
     <Folder Include="Core\Contactos\Queries\" />
     <Folder Include="Core\Contactos\Validators\" />
     <Folder Include="Core\Archivos\DTOs\" />
-    <Folder Include="Core\Archivos\Mappings\" />
-    <Folder Include="Core\Archivos\Queries\" />
     <Folder Include="Core\Archivos\Validators\" />
     <Folder Include="Core\Organizaciones\Commands\" />
     <Folder Include="Core\Organizaciones\DTOs\" />
@@ -47,7 +47,8 @@
     <Folder Include="Core\Catalogos\Queries\" />
     <Folder Include="Core\Catalogos\Commands\" />
     <Folder Include="CMS\" />
-    <Folder Include="Seguridad\" />
+    <Folder Include="Core\Personas\Constants\" />
+    <Folder Include="Core\Seguridad\Constants\" />
   </ItemGroup>
 
   <PropertyGroup>

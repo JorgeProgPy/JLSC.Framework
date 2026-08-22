@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Intefaces\" />
     <Folder Include="Common\Enums\" />
-    <Folder Include="Common\Exceptions\" />
-    <Folder Include="Common\Specification\" />
+    <Folder Include="Common\Specifications\" />
     <Folder Include="Common\ValueObjects\" />
     <Folder Include="Core\Catalogos\Enums\" />
     <Folder Include="Core\Catalogos\Interfaces\" />
@@ -27,7 +25,8 @@
     <Folder Include="Core\Geografia\Enums\" />
     <Folder Include="Core\Geografia\Interfaces\" />
     <Folder Include="CMS\" />
-    <Folder Include="Seguridad\" />
+    <Folder Include="Core\Personas\Configurations\" />
+    <Folder Include="Core\Personas\Interfaces\" />
   </ItemGroup>
 
 </Project>

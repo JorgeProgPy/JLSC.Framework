@@ -2,11 +2,45 @@
 
 public abstract class CatalogEntity : AuditableEntity
 {
-    public string Codigo { get; set; } = string.Empty;
+    protected CatalogEntity()
+    {
+    }
 
-    public string Nombre { get; set; } = string.Empty;
+    /// <summary>
+    /// Nombre del registro.
+    /// </summary>
+    public string Nombre { get; protected set; } = string.Empty;
 
-    public string? Descripcion { get; set; }
+    /// <summary>
+    /// Descripción opcional.
+    /// </summary>
+    public string? Descripcion { get; protected set; }
 
-    public short Orden { get; set; }
+    /// <summary>
+    /// Orden de visualización.
+    /// </summary>
+    public int Orden { get; protected set; }
+
+    public virtual void CambiarNombre(string nombre)
+    {
+        if (string.IsNullOrWhiteSpace(nombre))
+            throw new ArgumentException("El nombre es obligatorio.", nameof(nombre));
+
+        Nombre = nombre.Trim();
+    }
+
+    public virtual void CambiarDescripcion(string? descripcion)
+    {
+        Descripcion = string.IsNullOrWhiteSpace(descripcion)
+            ? null
+            : descripcion.Trim();
+    }
+
+    public virtual void CambiarOrden(int orden)
+    {
+        if (orden < 0)
+            throw new ArgumentOutOfRangeException(nameof(orden));
+
+        Orden = orden;
+    }
 }

@@ -6,7 +6,7 @@ public class Provincia : AuditableEntity
 {
     public long DepartamentoId { get; set; }
 
-    public string Codigo { get; set; } = null!;
+
 
     public string Nombre { get; set; } = null!;
 

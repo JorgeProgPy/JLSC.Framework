@@ -1,4 +1,8 @@
-﻿using JLSC.Framework.Domain.Common.Entities;
+﻿using JLSC.Framework.Domain.Common.Helpers;
+using JLSC.Framework.Domain.Common.Exceptions;
+using JLSC.Framework.Domain.Core.Archivos.Constants;
+
+using JLSC.Framework.Domain.Common.Entities;
 using JLSC.Framework.Domain.Core.Catalogos.Entities;
 using JLSC.Framework.Domain.Core.Archivos.ValueObjects;
 using System.IO;
@@ -11,7 +15,7 @@ public class Archivo : AuditableEntity
     // Identificación
     // ==========================
 
-    public string? Codigo { get; set; }
+
 
     public string Nombre { get; set; } = null!;
 
@@ -59,6 +63,8 @@ public class Archivo : AuditableEntity
 
     public long ProveedorAlmacenamientoId { get; set; }
 
+    public long? PropietarioPersonaId { get; private set; }
+
     // ==========================
     // Versionado
     // ==========================
@@ -90,19 +96,19 @@ public class Archivo : AuditableEntity
     public virtual ICollection<Archivo> Versiones { get; set; }
         = new List<Archivo>();
 
-
     // ==========================
-    // Archivo
+    // Fábrica
     // ==========================
 
     public static Archivo Create(
-    ArchivoStorageInfo storageInfo,
-    long carpetaArchivoId,
-    long tipoArchivoId,
-    long estadoArchivoId,
-    long proveedorAlmacenamientoId,
-    bool esPublico,
-    string? descripcion = null)
+        ArchivoStorageInfo storageInfo,
+        long carpetaArchivoId,
+        long tipoArchivoId,
+        long estadoArchivoId,
+        long proveedorAlmacenamientoId,
+        bool esPublico,
+        long? propietarioPersonaId = null,
+        string? descripcion = null)
     {
         ArgumentNullException.ThrowIfNull(storageInfo);
 
@@ -133,9 +139,59 @@ public class Archivo : AuditableEntity
 
             ProveedorAlmacenamientoId = proveedorAlmacenamientoId,
 
+            PropietarioPersonaId = propietarioPersonaId,
+
             EsPublico = esPublico,
 
             Descripcion = descripcion
         };
+    }
+
+    // ==========================
+    // Comportamiento
+    // ==========================
+
+    public void CambiarEstado(long estadoArchivoId)
+    {
+        if (estadoArchivoId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(estadoArchivoId));
+        }
+
+        EstadoArchivoId = estadoArchivoId;
+    }
+
+    public void CambiarDescripcion(string? descripcion)
+    {
+        Descripcion = string.IsNullOrWhiteSpace(descripcion)
+            ? null
+            : descripcion.Trim();
+    }
+
+    public void CambiarVisibilidad(bool esPublico)
+    {
+        EsPublico = esPublico;
+    }
+
+    public void MoverACarpeta(long carpetaArchivoId)
+    {
+        if (carpetaArchivoId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(carpetaArchivoId));
+        }
+
+        CarpetaArchivoId = carpetaArchivoId;
+    }
+
+    public void AsignarPropietarioPersona(long? propietarioPersonaId)
+    {
+        if (propietarioPersonaId.HasValue &&
+            propietarioPersonaId.Value <= 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(propietarioPersonaId));
+        }
+
+        PropietarioPersonaId = propietarioPersonaId;
     }
 }

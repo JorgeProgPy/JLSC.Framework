@@ -38,17 +38,37 @@ public sealed class CatalogoService : ICatalogoService
         string codigoItem,
         CancellationToken cancellationToken = default)
     {
-        var item = await ObtenerItemAsync(
-            codigoCatalogo,
-            codigoItem,
-            cancellationToken);
+        ArgumentException.ThrowIfNullOrWhiteSpace(codigoCatalogo);
+        ArgumentException.ThrowIfNullOrWhiteSpace(codigoItem);
 
-        if (item is null)
+        var id = await _context.CatalogoItems
+            .Where(x =>
+                x.Catalogo.Codigo == codigoCatalogo &&
+                x.Codigo == codigoItem)
+            .Select(x => (long?)x.Id)
+            .FirstOrDefaultAsync(cancellationToken);
+
+        if (!id.HasValue)
         {
             throw new InvalidOperationException(
                 $"No existe el catálogo '{codigoCatalogo}' con el código '{codigoItem}'.");
         }
 
-        return item.Id;
+        return id.Value;
+    }
+
+    public async Task<bool> ExisteItemAsync(
+        long catalogoItemId,
+        CancellationToken cancellationToken = default)
+    {
+        if (catalogoItemId <= 0)
+        {
+            return false;
+        }
+
+        return await _context.CatalogoItems
+            .AnyAsync(
+                x => x.Id == catalogoItemId,
+                cancellationToken);
     }
 }

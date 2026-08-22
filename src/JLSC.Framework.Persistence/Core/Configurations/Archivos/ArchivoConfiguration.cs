@@ -1,6 +1,7 @@
 ﻿using JLSC.Framework.Domain.Core.Archivos.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using JLSC.Framework.Domain.Core.Personas.Entities;
 
 namespace JLSC.Framework.Persistence.Core.Configurations.Archivos;
 
@@ -129,6 +130,15 @@ public class ArchivoConfiguration : IEntityTypeConfiguration<Archivo>
         builder.HasOne(x => x.ProveedorAlmacenamiento)
             .WithMany()
             .HasForeignKey(x => x.ProveedorAlmacenamientoId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // ==========================
+        // Propietario
+        // ==========================
+
+        builder.HasOne<Persona>()
+            .WithMany()
+            .HasForeignKey(x => x.PropietarioPersonaId)
             .OnDelete(DeleteBehavior.Restrict);
 
         // ==========================

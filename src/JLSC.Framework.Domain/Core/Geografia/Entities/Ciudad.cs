@@ -6,7 +6,7 @@ public class Ciudad : AuditableEntity
 {
     public long ProvinciaId { get; set; }
 
-    public string Codigo { get; set; } = null!;
+
 
     public string Nombre { get; set; } = null!;
 

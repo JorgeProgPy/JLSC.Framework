@@ -2,6 +2,8 @@
 using JLSC.Framework.Domain.Core.Catalogos.Entities;
 using JLSC.Framework.Domain.Core.Contactos.Entities;
 using JLSC.Framework.Domain.Core.Geografia.Entities;
+using JLSC.Framework.Domain.Core.Personas.Entities;
+using JLSC.Framework.Domain.Core.Seguridad.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace JLSC.Framework.Persistence.Core.Database;
@@ -46,6 +48,12 @@ public class JLSCDbContext : DbContext
     public DbSet<ContactoItem> ContactoItems => Set<ContactoItem>();
 
     // ==========================
+    // Personas
+    // ==========================
+
+    public DbSet<Persona> Personas => Set<Persona>();
+
+    // ==========================
     // Archivos
     // ==========================
 
@@ -54,6 +62,28 @@ public class JLSCDbContext : DbContext
     public DbSet<Archivo> Archivos => Set<Archivo>();
 
     #endregion
+
+    public DbSet<ArchivoReferencia> ArchivoReferencias =>
+        Set<ArchivoReferencia>();
+
+
+    // ==========================
+    // Seguridad
+    // ==========================
+
+    public DbSet<Usuario> Usuarios => Set<Usuario>();
+
+    public DbSet<Rol> Roles => Set<Rol>();
+
+    public DbSet<Permiso> Permisos => Set<Permiso>();
+
+    public DbSet<Modulo> Modulos => Set<Modulo>();
+
+    public DbSet<Menu> Menus => Set<Menu>();
+
+    public DbSet<UsuarioRol> UsuariosRoles => Set<UsuarioRol>();
+
+    public DbSet<RolPermiso> RolesPermisos => Set<RolPermiso>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -18,7 +18,7 @@ public static class CoreDataSeeder
             .ToArray();
 
         // ==========================
-        // 1. Cargar catálogos existentes
+        // Catálogos existentes
         // ==========================
 
         var catalogosExistentes = await context.Catalogos
@@ -26,23 +26,18 @@ public static class CoreDataSeeder
             .ToDictionaryAsync(x => x.Codigo);
 
         // ==========================
-        // 2. Crear catálogos faltantes
+        // Crear catálogos faltantes
         // ==========================
 
         foreach (var definicion in definiciones)
         {
             if (catalogosExistentes.ContainsKey(definicion.Codigo))
-            {
                 continue;
-            }
 
-            var catalogo = new Catalogo
-            {
-                Codigo = definicion.Codigo,
-                Nombre = definicion.Nombre,
-                EsSistema = true,
-                Activo = true
-            };
+            var catalogo = Catalogo.Create(
+                definicion.Codigo,
+                definicion.Nombre,
+                true);
 
             context.Catalogos.Add(catalogo);
 
@@ -51,11 +46,12 @@ public static class CoreDataSeeder
                 catalogo);
         }
 
-        // Necesario para obtener los Id de los catálogos nuevos.
+        // Guardar para obtener los Id generados
+
         await context.SaveChangesAsync();
 
         // ==========================
-        // 3. Obtener Id de catálogos
+        // Obtener Ids
         // ==========================
 
         var catalogoIds = catalogosExistentes
@@ -64,7 +60,7 @@ public static class CoreDataSeeder
             .ToArray();
 
         // ==========================
-        // 4. Cargar ítems existentes
+        // Ítems existentes
         // ==========================
 
         var itemsExistentes = await context.CatalogoItems
@@ -76,16 +72,12 @@ public static class CoreDataSeeder
             })
             .ToListAsync();
 
-        // ==========================
-        // 5. Crear índice en memoria
-        // ==========================
-
         var clavesExistentes = itemsExistentes
             .Select(x => (x.CatalogoId, x.Codigo))
             .ToHashSet();
 
         // ==========================
-        // 6. Crear ítems faltantes
+        // Crear ítems
         // ==========================
 
         foreach (var definicionCatalogo in definiciones)
@@ -100,21 +92,16 @@ public static class CoreDataSeeder
                     definicionItem.Codigo);
 
                 if (clavesExistentes.Contains(clave))
-                {
                     continue;
-                }
 
-                var item = new CatalogoItem
-                {
-                    CatalogoId = catalogo.Id,
-                    Codigo = definicionItem.Codigo,
-                    Nombre = definicionItem.Nombre,
-                    Valor = definicionItem.Valor,
-                    Descripcion = definicionItem.Descripcion,
-                    Icono = definicionItem.Icono,
-                    Orden = definicionItem.Orden,
-                    Activo = true
-                };
+                var item = CatalogoItem.Create(
+                    catalogo.Id,
+                    definicionItem.Codigo,
+                    definicionItem.Nombre,
+                    definicionItem.Valor,
+                    definicionItem.Descripcion,
+                    definicionItem.Icono,
+                    definicionItem.Orden);
 
                 context.CatalogoItems.Add(item);
 
@@ -123,39 +110,33 @@ public static class CoreDataSeeder
         }
 
         // ==========================
-        // 7. Guardar ítems nuevos
+        // Guardar cambios
         // ==========================
 
         await context.SaveChangesAsync();
     }
-
-    // ============================================================
-    // DEFINICIONES DE DATOS MAESTROS
-    // ============================================================
-
-    private static IReadOnlyCollection<CatalogoSeedDefinition>
-        ObtenerDefiniciones()
+    private static IReadOnlyCollection<CatalogoSeedDefinition> ObtenerDefiniciones()
     {
         return
         [
             new CatalogoSeedDefinition(
                 "TIPO_ARCHIVO",
-                "Tipo de archivo",
+                "Tipos de Archivo",
                 [
                     new CatalogoItemSeedDefinition(
-                        "IMAGEN",
-                        "Imagen",
-                        "IMAGE",
-                        "Archivos de imagen.",
-                        "bi bi-image",
+                        "JPG",
+                        "JPG",
+                        "JPG",
+                        "Imágenes en formato JPG.",
+                        "bi bi-file-earmark-image",
                         1),
 
                     new CatalogoItemSeedDefinition(
-                        "DOCUMENTO",
-                        "Documento",
-                        "DOCUMENT",
-                        "Documentos de propósito general.",
-                        "bi bi-file-earmark-text",
+                        "PNG",
+                        "PNG",
+                        "PNG",
+                        "Imágenes en formato PNG.",
+                        "bi bi-file-earmark-image",
                         2),
 
                     new CatalogoItemSeedDefinition(
@@ -167,133 +148,84 @@ public static class CoreDataSeeder
                         3),
 
                     new CatalogoItemSeedDefinition(
-                        "VIDEO",
-                        "Video",
-                        "VIDEO",
-                        "Archivos de video.",
-                        "bi bi-camera-video",
+                        "DOCX",
+                        "Word",
+                        "DOCX",
+                        "Documentos de Microsoft Word.",
+                        "bi bi-file-earmark-word",
                         4),
 
                     new CatalogoItemSeedDefinition(
-                        "AUDIO",
-                        "Audio",
-                        "AUDIO",
-                        "Archivos de audio.",
-                        "bi bi-file-earmark-music",
-                        5),
-
-                    new CatalogoItemSeedDefinition(
-                        "HOJA_CALCULO",
-                        "Hoja de cálculo",
-                        "SPREADSHEET",
-                        "Archivos de hojas de cálculo.",
-                        "bi bi-file-earmark-spreadsheet",
-                        6),
-
-                    new CatalogoItemSeedDefinition(
-                        "COMPRIMIDO",
-                        "Archivo comprimido",
-                        "COMPRESSED",
-                        "Archivos comprimidos.",
-                        "bi bi-file-earmark-zip",
-                        7),
-
-                    new CatalogoItemSeedDefinition(
-                        "OTRO",
-                        "Otro",
-                        "OTHER",
-                        "Archivos que no pertenecen a una categoría específica.",
-                        "bi bi-file-earmark",
-                        99)
+                        "XLSX",
+                        "Excel",
+                        "XLSX",
+                        "Hojas de cálculo de Microsoft Excel.",
+                        "bi bi-file-earmark-excel",
+                        5)
                 ]),
 
             new CatalogoSeedDefinition(
                 "ESTADO_ARCHIVO",
-                "Estado de archivo",
+                "Estados del Archivo",
                 [
                     new CatalogoItemSeedDefinition(
                         "ACTIVO",
                         "Activo",
-                        "ACTIVE",
-                        "Archivo disponible para su uso.",
+                        "ACTIVO",
+                        "Archivo disponible.",
                         "bi bi-check-circle",
                         1),
 
                     new CatalogoItemSeedDefinition(
-                        "PENDIENTE",
-                        "Pendiente",
-                        "PENDING",
-                        "Archivo pendiente de procesamiento o revisión.",
-                        "bi bi-clock",
+                        "INACTIVO",
+                        "Inactivo",
+                        "INACTIVO",
+                        "Archivo deshabilitado.",
+                        "bi bi-x-circle",
                         2),
 
                     new CatalogoItemSeedDefinition(
-                        "BLOQUEADO",
-                        "Bloqueado",
-                        "BLOCKED",
-                        "Archivo bloqueado temporalmente.",
-                        "bi bi-lock",
-                        3),
-
-                    new CatalogoItemSeedDefinition(
-                        "ARCHIVADO",
-                        "Archivado",
-                        "ARCHIVED",
-                        "Archivo conservado como histórico.",
-                        "bi bi-archive",
-                        4)
+                        "ELIMINADO",
+                        "Eliminado",
+                        "ELIMINADO",
+                        "Archivo eliminado lógicamente.",
+                        "bi bi-trash",
+                        3)
                 ]),
 
             new CatalogoSeedDefinition(
                 "PROVEEDOR_ALMACENAMIENTO",
-                "Proveedor de almacenamiento",
+                "Proveedor de Almacenamiento",
                 [
                     new CatalogoItemSeedDefinition(
                         "LOCAL",
-                        "Almacenamiento local",
+                        "Servidor Local",
                         "LOCAL",
-                        "Archivos almacenados en el sistema de archivos local.",
+                        "Archivos almacenados en el servidor.",
                         "bi bi-hdd",
                         1),
 
                     new CatalogoItemSeedDefinition(
-                        "NAS",
-                        "Almacenamiento NAS",
-                        "NAS",
-                        "Archivos almacenados en un dispositivo NAS.",
-                        "bi bi-device-hdd",
+                        "AZURE",
+                        "Azure Blob Storage",
+                        "AZURE",
+                        "Archivos almacenados en Azure.",
+                        "bi bi-cloud",
                         2),
 
                     new CatalogoItemSeedDefinition(
-                        "MINIO",
-                        "MinIO",
-                        "MINIO",
-                        "Almacenamiento de objetos mediante MinIO.",
-                        "bi bi-database",
-                        3),
-
-                    new CatalogoItemSeedDefinition(
-                        "AZURE_BLOB",
-                        "Azure Blob Storage",
-                        "AZURE_BLOB",
-                        "Almacenamiento de objetos mediante Azure Blob Storage.",
-                        "bi bi-cloud",
-                        4),
-
-                    new CatalogoItemSeedDefinition(
-                        "AMAZON_S3",
+                        "AWS",
                         "Amazon S3",
-                        "AMAZON_S3",
-                        "Almacenamiento de objetos mediante Amazon S3.",
-                        "bi bi-cloud",
-                        5)
+                        "AWS",
+                        "Archivos almacenados en Amazon S3.",
+                        "bi bi-cloud-upload",
+                        3)
                 ])
         ];
     }
-
-    // ============================================================
-    // DEFINICIONES INTERNAS
-    // ============================================================
+    // ==========================
+    // Definiciones
+    // ==========================
 
     private sealed record CatalogoSeedDefinition(
         string Codigo,

@@ -13,4 +13,8 @@ public interface ICatalogoService
         string codigoCatalogo,
         string codigoItem,
         CancellationToken cancellationToken = default);
+
+    Task<bool> ExisteItemAsync(
+    long catalogoItemId,
+    CancellationToken cancellationToken = default);
 }

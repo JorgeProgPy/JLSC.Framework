@@ -4,7 +4,7 @@ namespace JLSC.Framework.Domain.Core.Geografia.Entities;
 
 public class Pais : AuditableEntity
 {
-    public string Codigo { get; set; } = null!;
+
 
     public string CodigoISO2 { get; set; } = null!;
 

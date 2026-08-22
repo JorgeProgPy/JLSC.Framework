@@ -1,5 +1,9 @@
 using JLSC.Framework.Application.Core.Archivos.Interfaces;
 using JLSC.Framework.Application.Core.Catalogos.Interfaces;
+using JLSC.Framework.Application.Core.Personas.Interfaces;
+using JLSC.Framework.Application.Core.Seguridad.Commands.CrearModulo;
+using JLSC.Framework.Application.Core.Seguridad.Interfaces;
+using JLSC.Framework.Application.Core.Seguridad.Queries.ObtenerModulos;
 using JLSC.Framework.Contracts.Core.Archivos.Interfaces;
 using JLSC.Framework.Infrastructure.Core.Archivos.Storage.Local.Options;
 using JLSC.Framework.Infrastructure.Core.Archivos.Storage.Local.Services;
@@ -7,7 +11,11 @@ using JLSC.Framework.Persistence.Core.Archivos.Repositories;
 using JLSC.Framework.Persistence.Core.Catalogos.Services;
 using JLSC.Framework.Persistence.Core.Database;
 using JLSC.Framework.Persistence.Core.Database.Seeders;
+using JLSC.Framework.Persistence.Core.Personas.Repositories;
+using JLSC.Framework.Persistence.Core.Seguridad.Repositories;
+
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,7 +57,23 @@ builder.Services.AddScoped<IArchivoRepository, ArchivoRepository>();
 
 builder.Services.AddScoped<ICarpetaArchivoRepository, CarpetaArchivoRepository>();
 
+builder.Services.AddScoped<IArchivoReferenciaRepository, ArchivoReferenciaRepository>();
+
 builder.Services.AddScoped<ICatalogoService, CatalogoService>();
+
+builder.Services.AddScoped<IArchivoRepository, ArchivoRepository>();
+
+builder.Services.AddScoped<ICarpetaArchivoRepository, CarpetaArchivoRepository>();
+
+builder.Services.AddScoped<IArchivoReferenciaRepository, ArchivoReferenciaRepository>();
+
+builder.Services.AddScoped<ICatalogoService, CatalogoService>();
+
+builder.Services.AddScoped<IModuloRepository, ModuloRepository>();
+
+builder.Services.AddScoped<ObtenerModulosHandler>();
+
+builder.Services.AddScoped<CrearModuloHandler>();
 
 var app = builder.Build(); 
 

@@ -26,7 +26,7 @@ public class CarpetaArchivo : CatalogEntity
 
     public bool Visible { get; set; } = true;
 
-    public string? Descripcion { get; set; }
+   
 
     // ==========================
     // Navegación
@@ -39,4 +39,11 @@ public class CarpetaArchivo : CatalogEntity
 
     public virtual ICollection<Archivo> Archivos { get; set; }
         = new List<Archivo>();
+
+    // ==========================
+    // Propitario
+    // ==========================
+    public long? PropietarioId { get; private set; }
 }
+
+

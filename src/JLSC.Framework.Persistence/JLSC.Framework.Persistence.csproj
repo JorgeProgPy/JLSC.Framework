@@ -12,6 +12,10 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.9">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2" />
 	</ItemGroup>
 
@@ -24,7 +28,7 @@
 		<Folder Include="Core\Extensions\" />
 		<Folder Include="Core\Converters\" />
 		<Folder Include="CMS\" />
-		<Folder Include="Seguridad\" />
+		<Folder Include="Core\Configurations\Seguridad\" />
 		<Folder Include="UnitOfWork\" />
 		<Folder Include="Repositories\Archivos\" />
 		<Folder Include="Repositories\Catalogos\" />

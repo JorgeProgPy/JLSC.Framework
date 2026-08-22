@@ -6,7 +6,7 @@ public class Departamento : AuditableEntity
 {
     public long PaisId { get; set; }
 
-    public string Codigo { get; set; } = null!;
+ 
 
     public string Nombre { get; set; } = null!;
 

@@ -7,7 +7,7 @@
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="CMS\" />
-    <Folder Include="Seguridad\" />
+    <Folder Include="Core\Seguridad\" />
     <Folder Include="Core\Contactos\" />
     <Folder Include="Core\Organizaciones\" />
     <Folder Include="Core\Configuracion\" />

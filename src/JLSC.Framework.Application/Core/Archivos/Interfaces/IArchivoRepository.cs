@@ -8,6 +8,14 @@ public interface IArchivoRepository
         Archivo archivo,
         CancellationToken cancellationToken = default);
 
+    Task<Archivo?> ObtenerPorIdAsync(
+        long archivoId,
+        CancellationToken cancellationToken = default);
+
     Task GuardarCambiosAsync(
         CancellationToken cancellationToken = default);
+
+    Task ActualizarAsync(
+    Archivo archivo,
+    CancellationToken cancellationToken = default);
 }
