@@ -23,12 +23,14 @@
 		<Folder Include="Configurations\" />
 		<Folder Include="Core\Configurations\Organizaciones\" />
 		<Folder Include="Core\Configurations\Configuracion\" />
+		<Folder Include="Core\Configurations\Portal\NewFolder\" />
 		<Folder Include="Core\Database\Factories\" />
 		<Folder Include="Core\Database\Interceptors\" />
 		<Folder Include="Core\Extensions\" />
 		<Folder Include="Core\Converters\" />
 		<Folder Include="CMS\" />
 		<Folder Include="Core\Configurations\Seguridad\" />
+		<Folder Include="Repositories\Seguridad\" />
 		<Folder Include="UnitOfWork\" />
 		<Folder Include="Repositories\Archivos\" />
 		<Folder Include="Repositories\Catalogos\" />

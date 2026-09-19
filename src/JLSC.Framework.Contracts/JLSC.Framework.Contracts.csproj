@@ -11,7 +11,7 @@
     <Folder Include="Core\Contactos\" />
     <Folder Include="Core\Organizaciones\" />
     <Folder Include="Core\Configuracion\" />
-    <Folder Include="Core\Gografi\" />
+    <Folder Include="Core\Gografia\" />
     <Folder Include="Core\Catalogos\" />
   </ItemGroup>
 

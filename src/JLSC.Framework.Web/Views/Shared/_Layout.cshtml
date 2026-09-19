@@ -1,50 +1,215 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - JLSC.Framework.Web</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/JLSC.Framework.Web.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">JLSC.Framework.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
+    <title>@ViewData["Title"] - CADECO La Paz</title>
+
+    <script type="importmap"></script>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/JLSC.Framework.Web.styles.css"
+          asp-append-version="true" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+
+    <!-- ENCABEZADO INSTITUCIONAL -->
+    <header class="portal-header">
+
+        <nav class="navbar navbar-expand-lg bg-white">
+
+            <div class="container portal-header-container">
+
+                <a class="navbar-brand portal-logo"
+                   asp-area=""
+                   asp-controller="Portal"
+                   asp-action="Index">
+
+                    <span class="portal-logo-title">
+                        CADECO
+                    </span>
+
+                    <span class="portal-logo-subtitle">
+                        La Paz
+                    </span>
+
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#portalNavigation"
+                        aria-controls="portalNavigation"
+                        aria-expanded="false"
+                        aria-label="Abrir menú">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse"
+                     id="portalNavigation">
+
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-area=""
+                               asp-controller="Portal"
+                               asp-action="Index">
+                                Inicio
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">
+                                Institucional
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">
+                                Asociados
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">
+                                Proyectos
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">
+                                Noticias
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+    <main role="main">
+        @RenderBody()
+    </main>
+
+
+    <!-- PIE INSTITUCIONAL -->
+    <footer class="portal-footer">
+
         <div class="container">
-            &copy; 2026 - JLSC.Framework.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <h5>CADECO La Paz</h5>
+
+                    <p>
+                        Cámara Departamental de la Construcción
+                        de La Paz.
+                    </p>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <h6>Portal institucional</h6>
+
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <a href="#">
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Proyectos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Noticias
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <h6>Contacto</h6>
+
+                    <p>
+                        La Paz, Bolivia
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="portal-footer-bottom">
+
+                <span>
+                    &copy; 2026 CADECO La Paz
+                </span>
+
+                <span>
+                    Todos los derechos reservados.
+                </span>
+
+            </div>
+
         </div>
+
     </footer>
+
+
+    <!-- SCRIPTS -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

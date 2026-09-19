@@ -89,8 +89,7 @@ public class RolPermisoConfiguration
         builder.HasIndex(x => x.PublicId)
             .IsUnique();
 
-        builder.HasIndex(x => x.Codigo)
-            .IsUnique();
+        
 
         builder.HasIndex(x => new
         {

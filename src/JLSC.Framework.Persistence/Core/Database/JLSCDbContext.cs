@@ -4,6 +4,8 @@ using JLSC.Framework.Domain.Core.Contactos.Entities;
 using JLSC.Framework.Domain.Core.Geografia.Entities;
 using JLSC.Framework.Domain.Core.Personas.Entities;
 using JLSC.Framework.Domain.Core.Seguridad.Entities;
+using JLSC.Framework.Domain.Core.Portal.Entities;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace JLSC.Framework.Persistence.Core.Database;
@@ -83,7 +85,32 @@ public class JLSCDbContext : DbContext
 
     public DbSet<UsuarioRol> UsuariosRoles => Set<UsuarioRol>();
 
+
+    // ==========================
+    // Portal
+    // ==========================
+
+    public DbSet<Banner> Banners => Set<Banner>();
+
+
+    public DbSet<IndicadorInstitucional> IndicadoresInstitucionales
+    => Set<IndicadorInstitucional>();
+
+
     public DbSet<RolPermiso> RolesPermisos => Set<RolPermiso>();
+
+    public DbSet<AccesoRapido> AccesosRapidos
+    => Set<AccesoRapido>();
+
+    public DbSet<ProyectoDestacado> ProyectosDestacados
+    => Set<ProyectoDestacado>();
+
+
+    public DbSet<ConfiguracionInstitucional> ConfiguracionesInstitucionales
+       => Set<ConfiguracionInstitucional>();
+
+    public DbSet<RedSocialInstitucional> RedesSocialesInstitucionales
+        => Set<RedSocialInstitucional>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

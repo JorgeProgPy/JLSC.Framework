@@ -1,0 +1,288 @@
+@model JLSC.Framework.Web.ViewModels.Portal.InicioPortalViewModel
+
+@{
+    ViewData["Title"] = "Portal Institucional";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/portal/portal.css" asp-append-version="true" />
+}
+
+<main class="portal-home">
+
+    <!-- BANNER INSTITUCIONAL -->
+    <section class="portal-banner">
+
+        @if (Model.Banners.Any())
+        {
+            <div id="portalBannerCarousel"
+                 class="carousel slide"
+                 data-bs-ride="carousel">
+
+                <div class="carousel-indicators">
+                    @for (var i = 0; i < Model.Banners.Count; i++)
+                    {
+                        <button type="button"
+                                data-bs-target="#portalBannerCarousel"
+                                data-bs-slide-to="@i"
+                                class="@(i == 0 ? "active" : "")"
+                                aria-current="@(i == 0 ? "true" : "false")"
+                                aria-label="Banner @(i + 1)">
+                        </button>
+                    }
+                </div>
+
+                <div class="carousel-inner">
+
+                    @for (var i = 0; i < Model.Banners.Count; i++)
+                    {
+                        var banner = Model.Banners[i];
+
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+
+                            <div class="portal-banner-content">
+
+                                <div class="portal-banner-text">
+
+                                    <h1>@banner.Titulo</h1>
+
+                                    @if (!string.IsNullOrWhiteSpace(banner.Subtitulo))
+                                    {
+                                        <p>@banner.Subtitulo</p>
+                                    }
+
+                                    @if (!string.IsNullOrWhiteSpace(banner.Enlace))
+                                    {
+                                        <a href="@banner.Enlace"
+                                           class="btn btn-primary">
+                                            Conocer más
+                                        </a>
+                                    }
+
+                                </div>
+
+                                @if (banner.ArchivoId.HasValue)
+                                {
+                                    <div class="portal-banner-image">
+                                        <div class="portal-image-placeholder">
+                                            Imagen
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+
+                @if (Model.Banners.Count > 1)
+                {
+                    <button class="carousel-control-prev"
+                            type="button"
+                            data-bs-target="#portalBannerCarousel"
+                            data-bs-slide="prev">
+
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Anterior</span>
+
+                    </button>
+
+                    <button class="carousel-control-next"
+                            type="button"
+                            data-bs-target="#portalBannerCarousel"
+                            data-bs-slide="next">
+
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Siguiente</span>
+
+                    </button>
+                }
+
+            </div>
+        }
+        else
+        {
+            <div class="portal-banner-empty">
+                <h1>Cámara Departamental de la Construcción de La Paz</h1>
+                <p>Portal Institucional</p>
+            </div>
+        }
+
+    </section>
+
+
+    <!-- INDICADORES -->
+    @if (Model.Indicadores.Any())
+    {
+        <section class="portal-section portal-indicadores">
+
+            <div class="portal-container">
+
+                <div class="portal-section-header">
+                    <span class="portal-section-label">Nuestra institución</span>
+                    <h2>Indicadores institucionales</h2>
+                </div>
+
+                <div class="portal-indicadores-grid">
+
+                    @foreach (var indicador in Model.Indicadores)
+                    {
+                        <article class="portal-indicador-card">
+
+                            @if (!string.IsNullOrWhiteSpace(indicador.Icono))
+                            {
+                                <div class="portal-indicador-icon">
+                                    <i class="@indicador.Icono"></i>
+                                </div>
+                            }
+
+                            <div class="portal-indicador-valor">
+                                @indicador.Valor
+                            </div>
+
+                            <h3>@indicador.Titulo</h3>
+
+                            @if (!string.IsNullOrWhiteSpace(indicador.Descripcion))
+                            {
+                                <p>@indicador.Descripcion</p>
+                            }
+
+                        </article>
+                    }
+
+                </div>
+
+            </div>
+
+        </section>
+    }
+
+
+    <!-- ACCESOS RÁPIDOS -->
+    @if (Model.AccesosRapidos.Any())
+    {
+        <section class="portal-section portal-accesos">
+
+            <div class="portal-container">
+
+                <div class="portal-section-header">
+                    <span class="portal-section-label">Servicios</span>
+                    <h2>Accesos rápidos</h2>
+                </div>
+
+                <div class="portal-accesos-grid">
+
+                    @foreach (var acceso in Model.AccesosRapidos)
+                    {
+                        <a href="@acceso.Enlace"
+                           class="portal-acceso-card">
+
+                            @if (!string.IsNullOrWhiteSpace(acceso.Icono))
+                            {
+                                <div class="portal-acceso-icon">
+                                    <i class="@acceso.Icono"></i>
+                                </div>
+                            }
+
+                            <div>
+                                <h3>@acceso.Titulo</h3>
+
+                                @if (!string.IsNullOrWhiteSpace(acceso.Descripcion))
+                                {
+                                    <p>@acceso.Descripcion</p>
+                                }
+                            </div>
+
+                            <span class="portal-acceso-arrow">
+                                →
+                            </span>
+
+                        </a>
+                    }
+
+                </div>
+
+            </div>
+
+        </section>
+    }
+
+
+    <!-- PROYECTOS DESTACADOS -->
+    @if (Model.ProyectosDestacados.Any())
+    {
+        <section class="portal-section portal-proyectos">
+
+            <div class="portal-container">
+
+                <div class="portal-section-header">
+                    <span class="portal-section-label">Obras destacadas</span>
+                    <h2>Proyectos destacados</h2>
+                </div>
+
+                <div class="portal-proyectos-grid">
+
+                    @foreach (var proyecto in Model.ProyectosDestacados)
+                    {
+                        <article class="portal-proyecto-card">
+
+                            <div class="portal-proyecto-image">
+
+                                @if (proyecto.ArchivoId.HasValue)
+                                {
+                                    <div class="portal-image-placeholder">
+                                        Imagen
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="portal-image-placeholder">
+                                        Proyecto destacado
+                                    </div>
+                                }
+
+                            </div>
+
+                            <div class="portal-proyecto-content">
+
+                                <h3>@proyecto.Titulo</h3>
+
+                                @if (!string.IsNullOrWhiteSpace(proyecto.Ubicacion))
+                                {
+                                    <span class="portal-proyecto-location">
+                                        @proyecto.Ubicacion
+                                    </span>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(proyecto.Descripcion))
+                                {
+                                    <p>@proyecto.Descripcion</p>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(proyecto.Enlace))
+                                {
+                                    <a href="@proyecto.Enlace"
+                                       class="portal-proyecto-link">
+                                        Ver proyecto →
+                                    </a>
+                                }
+
+                            </div>
+
+                        </article>
+                    }
+
+                </div>
+
+            </div>
+
+        </section>
+    }
+
+</main>
+
+@section Scripts {
+    <script src="~/js/portal/portal.js" asp-append-version="true"></script>
+}

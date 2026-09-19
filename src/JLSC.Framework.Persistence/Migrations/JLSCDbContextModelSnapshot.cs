@@ -1004,6 +1004,222 @@ namespace JLSC.Framework.Persistence.Migrations
                     b.ToTable("Personas", (string)null);
                 });
 
+            modelBuilder.Entity("JLSC.Framework.Domain.Core.Portal.Entities.AccesoRapido", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
+
+                    b.Property<string>("Enlace")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Icono")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int>("Orden")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("PublicId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PublicId")
+                        .IsUnique();
+
+                    b.HasIndex("Activo", "Orden");
+
+                    b.ToTable("AccesoRapido", "Portal");
+                });
+
+            modelBuilder.Entity("JLSC.Framework.Domain.Core.Portal.Entities.Banner", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("boolean");
+
+                    b.Property<long?>("ArchivoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Enlace")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaFin")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaInicio")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Orden")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("PublicId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Subtitulo")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArchivoId");
+
+                    b.HasIndex("PublicId")
+                        .IsUnique();
+
+                    b.HasIndex("Activo", "Orden");
+
+                    b.HasIndex("FechaInicio", "FechaFin");
+
+                    b.ToTable("Banner", "Portal");
+                });
+
+            modelBuilder.Entity("JLSC.Framework.Domain.Core.Portal.Entities.IndicadorInstitucional", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Icono")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int>("Orden")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("PublicId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
+
+                    b.Property<string>("Valor")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PublicId")
+                        .IsUnique();
+
+                    b.HasIndex("Activo", "Orden");
+
+                    b.ToTable("IndicadorInstitucional", "Portal");
+                });
+
+            modelBuilder.Entity("JLSC.Framework.Domain.Core.Portal.Entities.ProyectoDestacado", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("boolean");
+
+                    b.Property<long?>("ArchivoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("Enlace")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Orden")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("PublicId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("Ubicacion")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArchivoId");
+
+                    b.HasIndex("PublicId")
+                        .IsUnique();
+
+                    b.HasIndex("Activo", "Orden");
+
+                    b.ToTable("ProyectoDestacado", "Portal");
+                });
+
             modelBuilder.Entity("JLSC.Framework.Domain.Core.Seguridad.Entities.Menu", b =>
                 {
                     b.Property<long>("Id")
@@ -1303,9 +1519,6 @@ namespace JLSC.Framework.Persistence.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Codigo")
-                        .IsUnique();
 
                     b.HasIndex("PermisoId");
 
@@ -1656,6 +1869,26 @@ namespace JLSC.Framework.Persistence.Migrations
                     b.Navigation("TipoDocumento");
 
                     b.Navigation("TipoPersona");
+                });
+
+            modelBuilder.Entity("JLSC.Framework.Domain.Core.Portal.Entities.Banner", b =>
+                {
+                    b.HasOne("JLSC.Framework.Domain.Core.Archivos.Entities.Archivo", "Archivo")
+                        .WithMany()
+                        .HasForeignKey("ArchivoId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Archivo");
+                });
+
+            modelBuilder.Entity("JLSC.Framework.Domain.Core.Portal.Entities.ProyectoDestacado", b =>
+                {
+                    b.HasOne("JLSC.Framework.Domain.Core.Archivos.Entities.Archivo", "Archivo")
+                        .WithMany()
+                        .HasForeignKey("ArchivoId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Archivo");
                 });
 
             modelBuilder.Entity("JLSC.Framework.Domain.Core.Seguridad.Entities.Menu", b =>
